@@ -1,28 +1,28 @@
 #include <Arduino.h>
 
-#include "socket/udp/client/udp_client.h"
-#include "socket/udp/server/udp_server.h"
+#include "socket/udp_socket.h"
 
 SocketServer server;
 SocketClient client;
+
+UDPSocket socket;
 
 char data[100];
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-  String address = "192.168.0.112";
+  String address = "192.168.0.115";
 
-  server = SocketServer(8080);
-  server.start();
-
-  // client = Client(address, 8080);
-  // client.connect();
+  socket = UDPSocket(address, 8080);
+  socket.begin();
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  // client.send("hello");
-  server.recv(data);
+
+  socket.send("hello");
+  // String received = socket.recv();
+  // Serial.println(received);
   sleep(1);
 }

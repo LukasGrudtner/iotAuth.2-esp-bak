@@ -41,7 +41,7 @@ class IotAuthClient
          * Indicates whether or not there is a 
          * connection to the server.
          **/
-        bool isConnected();
+        bool connected();
 
     private:
 
